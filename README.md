@@ -46,3 +46,82 @@ Build a microservice that:
 git clone https://github.com/kandulanaveenkumar/task-service.git
 cd task-service
 go mod tidy
+```
+
+## 2. Set up PostgreSQL
+
+without DOCKER
+
+go run main.go
+
+Using Docker:
+
+docker run --name task-db -e POSTGRES_PASSWORD=postgres \
+  -e POSTGRES_USER=postgres -e POSTGRES_DB=tasks_db \
+  -p 5432:5432 -d postgres
+
+
+## API DOCUMENTATION
+
+1. Create Task
+   POST /tasks
+Content-Type: application/json
+
+{
+  "title": "Write unit tests",
+  "status": "Pending"
+}
+
+2. Get Tasks with Pagination & Filter
+   GET /tasks?status=Pending&page=1&limit=5
+
+3. Update Task
+   PUT /tasks/1
+Content-Type: application/json
+
+{
+  "title": "Write more unit tests",
+  "status": "Completed"
+}
+
+
+
+## Microservices Concepts
+
+✅ Separation of Concerns
+	•	Handler layer: only handles HTTP
+	•	Service layer: business logic
+	•	Repository layer: DB queries
+
+✅ Single Responsibility Principle
+
+Each package (handlers, services, repositories) focuses on a specific job.
+
+✅ Statelessness
+
+The microservice does not maintain user sessions — it’s stateless and horizontally scalable.
+
+✅ Deployable as Unit
+
+The service runs independently via Docker, making it container-ready and orchestration-friendly (Kubernetes, etc.).
+
+✅ Extensibility
+
+Supports easy addition of features like:
+	•	Authentication middleware
+	•	Logging/tracing
+	•	gRPC communication between services
+
+⸻
+
+🔐 Future Improvements
+	•	Add authentication (JWT/OAuth2)
+	•	Use gRPC for inter-service communication
+	•	Add unit and integration tests
+	•	CI/CD with GitHub Actions or Docker Hub
+
+
+
+  
+
+
