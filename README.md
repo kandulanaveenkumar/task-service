@@ -28,7 +28,6 @@ Build a microservice that:
 
 - Uses **Gorilla Mux** for routing.
 - Uses **GORM** for database abstraction.
-- Uses **Swaggo** for Swagger documentation.
 - Designed to be cloud/container ready with **Dockerfile**.
 
 ---
