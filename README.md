@@ -43,6 +43,6 @@ Build a microservice that:
 ### 📦 1. Clone and Setup
 
 ```bash
-git clone https://github.com/your-username/task-service.git
+git clone https://github.com/kandulanaveenkumar/task-service.git
 cd task-service
 go mod tidy
